@@ -2574,10 +2574,10 @@ bool ON_TextContent::FormatAreaOrVolume(
   if (nullptr == dimstyle)
     dimstyle = &ON_DimStyle::Default;
 
-  const ON_DimStyle::LengthDisplay dim_length_display =
+  /*const ON_DimStyle::LengthDisplay dim_length_display =
     alt
     ? dimstyle->AlternateDimensionLengthDisplay()
-    : dimstyle->DimensionLengthDisplay();
+    : dimstyle->DimensionLengthDisplay();*/
 
   const ON::LengthUnitSystem dim_us
     = alt

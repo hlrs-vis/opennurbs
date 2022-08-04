@@ -556,7 +556,7 @@ void ON_GL(
 void ON_GL( const ON_PointCloud& cloud )
 {
   int i;
-  ON_3dPoint P;
+  //ON_3dPoint P;
   glBegin(GL_POINTS);
   for ( i = 0; i < cloud.PointCount(); i++ ) {
     ON_GL( cloud.m_P[i] );

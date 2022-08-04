@@ -23,7 +23,6 @@
 // and the opennurbs .h files alter what is declared and how it is declared.
 #error ON_COMPILING_OPENNURBS must be defined when compiling opennurbs
 #endif
-
 static bool IdIsNotNil(const ON_UUID* id)
 {
   // This is a fast static function to check for
@@ -102,12 +101,12 @@ public:
   struct ON_SerialNumberMap::SN_ELEMENT m_sn[ON_SN_BLOCK::SN_BLOCK_CAPACITY];
 
 
-  /*
-  Returns:
-    true 
-      The number of purged elements is high enough that the cost of culling
-      will be recovered by improved search speeds.
-  */
+  
+  //Returns:
+  //  true 
+  //    The number of purged elements is high enough that the cost of culling
+  //    will be recovered by improved search speeds.
+  
   bool NeedsToBeCulled() const;
 
   void EmptyBlock();
@@ -238,10 +237,10 @@ void ON_SN_BLOCK::CullBlockHelper()
 
 
 
-/*
-The defines and #include generates a fast sorting function
-static void ON_qsort_SN_ELEMENT( struct ON_SerialNumberMap::SN_ELEMENT* base, size_t nel );
-*/
+
+//The defines and #include generates a fast sorting function
+//static void ON_qsort_SN_ELEMENT( struct ON_SerialNumberMap::SN_ELEMENT* base, size_t nel );
+
 
 #define ON_SORT_TEMPLATE_COMPARE compare_SN_ELEMENT_sn
 #define ON_COMPILING_OPENNURBS_QSORT_FUNCTIONS
@@ -708,7 +707,7 @@ ON__UINT64 ON_SerialNumberMap::ActiveIdCount() const
 {
   return m_active_id_count;
 }
-
+/*
 struct ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::FirstElement() const
 {
   struct SN_ELEMENT* e=0;
@@ -743,10 +742,12 @@ struct ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::FirstElement() const
 
       // memory location for specific elements will be changed.
       // This will make the hash table invalid.
-      const_cast<ON_SerialNumberMap*>(this)->Internal_HashTableInvalidate();
+      ON_SerialNumberMap* ncThis = const_cast<ON_SerialNumberMap*>(this);
+      ncThis->Internal_HashTableInvalidate();
+      //const_cast<ON_SerialNumberMap*>(this)->Internal_HashTableInvalidate();
 
-      const_cast<ON_SerialNumberMap*>(this)->m_sn_count -= m_sn_block0.m_purged;
-      const_cast<ON_SerialNumberMap*>(this)->m_sn_purged -= m_sn_block0.m_purged;
+      //const_cast<ON_SerialNumberMap*>(this)->m_sn_count -= m_sn_block0.m_purged;
+      //const_cast<ON_SerialNumberMap*>(this)->m_sn_purged -= m_sn_block0.m_purged;
       const_cast<ON_SerialNumberMap*>(this)->m_sn_block0.CullBlockHelper();
     }
     if ( !m_sn_block0.m_sorted )
@@ -755,7 +756,7 @@ struct ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::FirstElement() const
 
       // memory location for specific elements will be changed.
       // This will make the hash table invalid.
-      const_cast<ON_SerialNumberMap*>(this)->Internal_HashTableInvalidate();
+      //const_cast<ON_SerialNumberMap*>(this)->Internal_HashTableInvalidate();
 
       const_cast<ON_SerialNumberMap*>(this)->m_sn_block0.SortBlockHelper();      
     }
@@ -768,7 +769,7 @@ struct ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::FirstElement() const
   }
   return e;
 }
-
+*/
 struct ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::LastElement() const
 {
   struct SN_ELEMENT* e=0;
@@ -1026,7 +1027,6 @@ ON__UINT64 ON_SerialNumberMap::GetElements(
   
   return (elements.Count() - elements_count0);
 }
-
 ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::Internal_HashTableRemoveElement(
   struct SN_ELEMENT* e,
   bool bRemoveFromHashBlock
@@ -1078,7 +1078,6 @@ ON_SerialNumberMap::SN_ELEMENT* ON_SerialNumberMap::Internal_HashTableRemoveElem
   e->m_next = nullptr;
   return e;
 }
-
 struct ON_SerialNumberMap::SN_ELEMENT* 
 ON_SerialNumberMap::RemoveSerialNumberAndId(ON__UINT64 sn)
 {
@@ -1864,7 +1863,7 @@ ON__UINT64 ON_SerialNumberMap::Internal_HashTableAddSerialNumberBlock( ON_SN_BLO
     if (1 == m_hash_block_count)
     {
       hash_table_block = m_hash_table_blocks[0];
-      for (/* empty init */; e < e1; e++)
+      for (; e < e1; e++) // empty init 
       {
         if (0 == e->m_id_active)
         {
@@ -1879,7 +1878,7 @@ ON__UINT64 ON_SerialNumberMap::Internal_HashTableAddSerialNumberBlock( ON_SN_BLO
     }
     else
     {
-      for (/* empty init */; e < e1; e++)
+      for (; e < e1; e++) // empty init 
       {
         if (0 == e->m_id_active)
         {

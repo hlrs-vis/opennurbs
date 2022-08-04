@@ -1890,7 +1890,7 @@ bool ON_SubDHeap::Internal_InitializeLimitCurvesPool()
       ++subd_edge_count;
     }
 
-    const size_t sizeof_element = sizeof(ON_SubDEdgeSurfaceCurve);
+    //const size_t sizeof_element = sizeof(ON_SubDEdgeSurfaceCurve);
 
     Internal_InitializeMeshFragmentPool(
       sizeof(ON_SubDEdgeSurfaceCurve),

@@ -1,0 +1,5 @@
+@PACKAGE_INIT@ 
+
+set_and_check ( opennurbs_public_INCLUDE_DIRS "@PACKAGE_opennurbs_public_INCLUDE_DIRS@")
+
+include ( "${CMAKE_CURRENT_LIST_DIR}/opennurbs_publicTargets.cmake" )

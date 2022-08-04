@@ -11124,13 +11124,13 @@ protected:
 
   void Internal_TransformComponentBase(bool bTransformationSavedSubdivisionPoint, const class ON_Xform& xform);
   // GetSubdivisionPoint( bUseSavedSubdivisionPoint=true ) can change the value of m_cache_subd_P
-  mutable double m_saved_subd_point1[3]; // saved subdivision point
+  mutable double m_saved_subd_point1[3]={0,0,0}; // saved subdivision point
 
 private:
   // Reserved for future use for attributes that apply to allSubD components (ON_SubDVertex, ON_SubDEdge, and ON_SubDFace).
-  ON__UINT64 m_reserved8bytes1;
-  ON__UINT64 m_reserved8bytes2;
-  ON__UINT64 m_reserved8bytes3;
+  ON__UINT64 m_reserved8bytes1=0;
+  ON__UINT64 m_reserved8bytes2=0;
+  ON__UINT64 m_reserved8bytes3=0;
 
 public:
   /*

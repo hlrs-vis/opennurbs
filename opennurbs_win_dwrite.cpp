@@ -869,7 +869,7 @@ void ON_WindowsDWriteFontInformation::Dump(ON_TextLog& text_log) const
 {
   text_log.Print("IDWriteFont:\n");
 
-  const bool bTerse = text_log.LevelOfDetailIsAtLeast(ON_TextLog::LevelOfDetail::Medium);
+  //const bool bTerse = text_log.LevelOfDetailIsAtLeast(ON_TextLog::LevelOfDetail::Medium);
   const bool bChatty = text_log.LevelOfDetailIsAtLeast(ON_TextLog::LevelOfDetail::Medium);
   const bool bVerbose = text_log.LevelOfDetailIsAtLeast(ON_TextLog::LevelOfDetail::Maximum);
 
@@ -1912,7 +1912,7 @@ bool ON_WindowsDWriteGetGlyphMetrics(
 
   const UINT32 glyphCount = 1;
   const BOOL isSideways = 0;
-  const BOOL isRightToLeft = 0;
+  //const BOOL isRightToLeft = 0;
   const UINT16 glyphIndices[2] = { (UINT16)dwriteGlyphIndex, 0 };
 
   DWRITE_GLYPH_METRICS  glyphMetrics[2] = {};

@@ -1679,7 +1679,7 @@ void ON_ManagedFonts::Internal_GetWindowsInstalledFonts(
   ON_SimpleArray<ON_WindowsDWriteFontInformation> dwrite_font_list;
   // freetype cannot support simulated fonts. If freetype is not used, we can include simulated fonts.
   const bool bIncludeSimulatedFontFaces = true;
-  const bool bKeepDWriteFont = true;
+  //const bool bKeepDWriteFont = true;
   ON_Font::GetInstalledWindowsDWriteFonts(
     L"GetUserDefaultLocaleName",
     bIncludeSimulatedFontFaces,
@@ -3448,7 +3448,7 @@ const ON_Font* ON_Font::FontFromRichTextProperties(
 
   const ON_FontFaceQuartet::Member rich_text_quartet_face = ON_FontFaceQuartet::MemberFromBoldAndItalic(bBoldQuartetMember, bItalicQuartetMember);
 
-  const bool bDecorated = bUnderlined || bStrikethrough;
+  //const bool bDecorated = bUnderlined || bStrikethrough;
 
   ON_FontFaceQuartet installed_quartet = ON_ManagedFonts::InstalledFonts().QuartetFromQuartetName(rich_text_font_name);
   if ( installed_quartet.IsNotEmpty() )
@@ -3644,10 +3644,10 @@ const ON_Font* ON_Font::FontFromRichTextProperties(
   // a fake quartet based on only the rtf_font_name.
   // (Sure wish we had not dumped the V5 font table, sigh.)
   const ON_Font* existing_managed_font = ON_Font::GetManagedFont(fake_font, false);
-  const ON_FontFaceQuartet::Member existing_managed_font_quartet_face = 
+  /*const ON_FontFaceQuartet::Member existing_managed_font_quartet_face =
     (nullptr != existing_managed_font)
     ? existing_managed_font->m_quartet_member 
-    : ON_FontFaceQuartet::Member::Unset;
+    : ON_FontFaceQuartet::Member::Unset;*/
 
   if (nullptr != existing_managed_font)
   {
@@ -10210,7 +10210,7 @@ void ON_Font::DumpLogfont(
   text_log.Print("lfQuality = %s\n", static_cast<const char*>(s));
 
   const unsigned int pitch = (logfont->lfPitchAndFamily & 0x03);
-  const unsigned int family = (logfont->lfPitchAndFamily & 0xF);
+  //const unsigned int family = (logfont->lfPitchAndFamily & 0xF);
   switch (pitch)
   {
   case DEFAULT_PITCH: s = "DEFAULT_PITCH"; break;
@@ -12553,7 +12553,7 @@ bool ON_Font::GetWindowsTextMetrics(
 
   // need to get TEXTMETRICS tmInternalLeading
   const bool bValidMapModeParameter = (map_mode >= MM_MIN && map_mode <= MM_MAX);
-  const bool bNeedDeviceContext = (false == bValidMapModeParameter || MM_TEXT == map_mode);
+  //const bool bNeedDeviceContext = (false == bValidMapModeParameter || MM_TEXT == map_mode);
   HDC font_hdc = nullptr;
 
   const int savedDC

@@ -18979,7 +18979,7 @@ unsigned int ON_SubD::SetVertexTags(
     if (vertex->m_vertex_tag == vertex_tag)
       continue;
 
-    const bool bRemoveCorner = ON_SubDVertexTag::Corner == vertex->m_vertex_tag;
+    //const bool bRemoveCorner = ON_SubDVertexTag::Corner == vertex->m_vertex_tag;
 
     if (ON_SubDVertexTag::Corner != vertex_tag)
     {

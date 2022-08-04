@@ -34,7 +34,7 @@
 // Please define OPENNURBS_INPUT_LIBS_DIR in your build environment 
 // Please do not modify the opennurbs vcxproj files. Instead use
 // a property sheet (.props file), .sln file, or define it here.
-#error You must define OPENNURBS_INPUT_LIBS_DIR
+// not witch cmake #error You must define OPENNURBS_INPUT_LIBS_DIR
 
 #endif
 

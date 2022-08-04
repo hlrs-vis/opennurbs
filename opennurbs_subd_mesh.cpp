@@ -1864,7 +1864,7 @@ bool ON_SubD::Internal_GetGeometryControlNetMesh(
         if (face->m_edge_count < 3)
           continue;
 
-        const bool bQuad = 4 == face->m_edge_count;
+        //const bool bQuad = 4 == face->m_edge_count;
 
         for (unsigned short fvi = 0; fvi < face->m_edge_count; fvi++)
         {

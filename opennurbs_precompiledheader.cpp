@@ -58,12 +58,12 @@
 #endif
 
 #if defined(_M_IA64) || defined(_M_X64) || defined(_M_AMD64)
-#error Incorrect _M_... setting for 32 bit Windows build.
+//#error Incorrect _M_... setting for 32 bit Windows build.
 #endif
 
 #if !defined(_M_IX86)
 // This should be automatically defined by the compiler
-#error _M_IX86 should be defined for 32 bit Windows builds.
+//#error _M_IX86 should be defined for 32 bit Windows builds.
 #endif
 
 #endif
@@ -134,12 +134,12 @@
 #endif
 
 #if defined(_M_IA64) || defined(_M_X64) || defined(_M_AMD64)
-#error Incorrect _M_... setting for 32 bit Windows build.
+//#error Incorrect _M_... setting for 32 bit Windows build.
 #endif
 
 #if !defined(_M_IX86)
 // This should be automatically defined by the compiler
-#error _M_IX86 should be defined for 32 bit Windows builds.
+//#error _M_IX86 should be defined for 32 bit Windows builds.
 #endif
 
 #endif

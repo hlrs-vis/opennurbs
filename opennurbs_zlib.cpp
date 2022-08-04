@@ -35,12 +35,6 @@
 #if defined(OPENNURBS_INPUT_LIBS_DIR)
 // Typically, OPENNURBS_LIB_DIR is defined in opennurbs_msbuild.Cpp.props
 #define OPENNURBS_ZLIB_LIB_DIR OPENNURBS_INPUT_LIBS_DIR
-#else
-// Define OPENNURBS_ZLIB_LIB_DIR to be the directory containing zlib.lib
-#error You must define OPENNURBS_ZLIB_LIB_DIR
-#endif
-
-#endif
 
 
 #if defined(_LIB) && defined(_MT) && !defined(_DLL)
@@ -51,6 +45,14 @@
 // using Microsoft DLL C-runtime
 #pragma message ( "Linking with zlib.lib in " OPENNURBS_PP2STR(OPENNURBS_ZLIB_LIB_DIR) )
 #pragma comment(lib, "\"" OPENNURBS_ZLIB_LIB_DIR "/" "zlib.lib" "\"")
+#endif
+
+
+#else
+// Define OPENNURBS_ZLIB_LIB_DIR to be the directory containing zlib.lib
+//error You must define OPENNURBS_ZLIB_LIB_DIR
+#endif
+
 #endif
 
 #endif
@@ -313,7 +315,7 @@ size_t ON_BinaryArchive::WriteDeflate( // returns number of bytes written
       // no uncompressed input is left - switch to finish mode
       flush = Z_FINISH;
     }
-    zrc = z_deflate(&m_zlib.m_strm, flush);
+    zrc = deflate(&m_zlib.m_strm, flush);
     if ( zrc < 0 ) 
     {
       // Something went haywire - bail out.
@@ -513,7 +515,7 @@ bool ON_BinaryArchive::ReadInflate(
       // no compressed input is left - switch to finish mode
       flush = Z_FINISH;
     }
-    zrc = z_inflate( &m_zlib.m_strm, flush );
+    zrc = inflate( &m_zlib.m_strm, flush );
     if ( zrc < 0 ) 
     {
       // Something went haywire - bail out.
@@ -1183,7 +1185,7 @@ size_t ON_CompressedBuffer::DeflateHelper( // returns number of bytes written
       // no uncompressed input is left - switch to finish mode
       flush = Z_FINISH;
     }
-    zrc = z_deflate( &m_zlib.m_strm, flush ); 
+    zrc = deflate( &m_zlib.m_strm, flush ); 
     if ( zrc < 0 ) 
     {
       // Something went haywire - bail out.
@@ -1316,7 +1318,7 @@ bool ON_CompressedBuffer::InflateHelper(
       // no compressed input is left - switch to finish mode
       flush = Z_FINISH;
     }
-    zrc = z_inflate( &m_zlib.m_strm, flush );
+    zrc = inflate( &m_zlib.m_strm, flush );
     if ( zrc < 0 ) 
     {
       // Something went haywire - bail out.

@@ -48,7 +48,7 @@ unsigned int ON_SubD::GetQuadSectorPointRing(
 
   const double* point_ring1 = point_ring + (point_ring_count*point_ring_stride);
 
-  const bool bUseSavedSubdivisionPoint = bSecondPass;
+  //const bool bUseSavedSubdivisionPoint = bSecondPass;
 
   for (unsigned int pass = (bFirstPass ? 0U : 1U); pass < (bSecondPass ? 2U : 1U); pass++)
   {
