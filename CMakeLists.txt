@@ -392,6 +392,8 @@ if(WIN32)
 
 
 target_link_libraries(opennurbs_public shlwapi.lib)
+else()
+target_link_libraries(opennurbs_public uuid)
 endif()
 
 set_target_properties(opennurbs_public PROPERTIES

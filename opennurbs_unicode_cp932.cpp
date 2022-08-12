@@ -24,9 +24,9 @@
 #error ON_COMPILING_OPENNURBS must be defined when compiling opennurbs
 #endif
 
-#if !defined(ON_RUNTIME_WIN)
-#error Do not use for Windows builds.
-#endif
+//#if !defined(ON_RUNTIME_WIN)
+//#error Do not use for Windows builds.
+//#endif
 
 
 #include "opennurbs_internal_unicode_cp.h"
@@ -7154,6 +7154,7 @@ int ON_Internal_MapWindowsCodePage932ToUnicode(
     switch (code_page_932_lead_byte_value)
     {
       //case 0x80: code_point = Internal_MapWindowsCodePage932ToUnicode_0x80(code_page_932_character_value); break;
+    #ifdef WIN32
     case 0x81: code_point = Internal_MapWindowsCodePage932ToUnicode_0x81(code_page_932_character_value); break;
     case 0x82: code_point = Internal_MapWindowsCodePage932ToUnicode_0x82(code_page_932_character_value); break;
     case 0x83: code_point = Internal_MapWindowsCodePage932ToUnicode_0x83(code_page_932_character_value); break;
@@ -7288,6 +7289,7 @@ int ON_Internal_MapWindowsCodePage932ToUnicode(
     case 0xFD: code_point = Internal_MapWindowsCodePage932ToUnicode_0xFD(code_page_932_character_value); break;
       //case 0xFE: code_point = Internal_MapWindowsCodePage932ToUnicode_0xFE(code_page_932_character_value); break;
       //case 0xFF: code_point = Internal_MapWindowsCodePage932ToUnicode_0xFF(code_page_932_character_value); break;
+      #endif
 
     }
     rc = (ON_UnicodeCodePoint::ON_ReplacementCharacter != code_point);

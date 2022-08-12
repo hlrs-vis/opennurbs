@@ -83,7 +83,9 @@
 #define ON_EXTERN_DECL __attribute__ ((visibility ("default")))
 
 #else
-#error fill in your compiler dynamic linking decorations
+#define ON_CLASS __attribute__ ((visibility ("default")))
+#define ON_DECL __attribute__ ((visibility ("default")))
+#define ON_EXTERN_DECL __attribute__ ((visibility ("default")))
 #endif
 
 #elif defined(OPENNURBS_IMPORTS)
@@ -97,6 +99,11 @@
 #define ON_DLL_TEMPLATE extern
 
 #elif defined(ON_COMPILER_CLANG)
+/* using opennurbs as an Apple shared library */
+#define ON_CLASS __attribute__ ((visibility ("default")))
+#define ON_DECL __attribute__ ((visibility ("default")))
+#define ON_EXTERN_DECL __attribute__ ((visibility ("default")))
+#elif defined(__GNUC__)
 /* using opennurbs as an Apple shared library */
 #define ON_CLASS __attribute__ ((visibility ("default")))
 #define ON_DECL __attribute__ ((visibility ("default")))

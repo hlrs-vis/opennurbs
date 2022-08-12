@@ -24,9 +24,9 @@
 #error ON_COMPILING_OPENNURBS must be defined when compiling opennurbs
 #endif
 
-#if !defined(ON_RUNTIME_WIN)
-#error Do not use for Windows builds.
-#endif
+//#if !defined(ON_RUNTIME_WIN)
+//#error Do not use for Windows builds.
+//#endif
 
 #include "opennurbs_internal_unicode_cp.h"
 
