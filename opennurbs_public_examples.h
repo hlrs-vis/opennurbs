@@ -35,19 +35,6 @@
 #error This file contains linking pragmas for using the opennurbs library.
 #endif
 
-#if defined(OPENNURBS_IMPORTS)
-#pragma message( " --- dynamically linking public opennurbs (DLL)." )
-#pragma comment(lib, "\"" OPENNURBS_OUTPUT_DIR "/" "opennurbs_public.lib" "\"")
-#else
-#pragma message( " --- statically linking public opennurbs." )
-#pragma comment(lib, "\"" OPENNURBS_OUTPUT_DIR "/" "opennurbs_public_staticlib.lib" "\"")
-#pragma comment(lib, "\"" OPENNURBS_OUTPUT_DIR "/" "zlib.lib" "\"")
-#if defined(OPENNURBS_FREETYPE_SUPPORT)
-#pragma comment(lib, "\"" OPENNURBS_OUTPUT_DIR "/" "freetype263_staticlib.lib" "\"")
-#endif
-#pragma comment(lib, "rpcrt4.lib")
-#pragma comment(lib, "shlwapi.lib")
-#endif
 
 #endif
 

@@ -416,8 +416,8 @@ configure_package_config_file (
         "opennurbs_public-config.cmake.in"
         # Important to write in CMAKE_BINARY_DIR if you want the registry
         # mechanism to work:
-        "${CMAKE_CURRENT_BINARY_DIR}/opennurbs_public-config.cmake"  
-        INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/lib/cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/opennurbs-config.cmake"  
+        INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
         PATH_VARS opennurbs_public_INCLUDE_DIRS )
 
 # This file is included in our template:
@@ -437,10 +437,10 @@ install(TARGETS opennurbs_public
 install(
     EXPORT opennurbs_publicTargets 
     FILE opennurbs_publicTargets.cmake
-    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
 )
 
 install(
-    FILES "${CMAKE_CURRENT_BINARY_DIR}/opennurbs_public-config.cmake"
-    DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake"
+    FILES "${CMAKE_CURRENT_BINARY_DIR}/opennurbs-config.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
 )
